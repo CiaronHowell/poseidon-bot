@@ -5,7 +5,9 @@
     "main": "bot.js",
     "author": "Ciaron Howell",
     "dependencies": {
+        "dateformat": "^3.0.2",
         "discord.io": "^2.5.3",
+        "pm2": "^2.7.2",
         "winston": "^2.4.0"
     }
 }
