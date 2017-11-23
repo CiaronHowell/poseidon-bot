@@ -1,0 +1,42 @@
+case 'holdtight':
+                bot.sendMessage({
+                    to: channelID,
+                    message: 'Hold tight, ' + user
+                });
+                break;
+
+            case '2+2=4':
+                bot.sendMessage({
+                    to: channelID,
+                    message: "That's quick maths, " + user
+                });
+                break;
+
+            case 'hannah':
+                bot.sendMessage({
+                    to: channelID,
+                    message: "Fortunately, that is " + user
+                        + "'s girlfriend :smile:"
+                });
+                break;
+
+            case 'time':
+                bot.sendMessage({
+                    to: channelID,
+                    message: dateFormat(now, 'HH:MM! ') + "Can't touch this!"
+                });
+                break;
+                
+            case 'date':
+                bot.sendMessage({
+                    to: channelID,
+                    message: "" + dateFormat(now, "dddd, dS mmmm, yyyy")
+                });
+                break;
+
+            case '4-1=3':
+                bot.sendMessage({
+                    to: channelID,
+                    message: "That's mediocre maths, " + user
+                });
+                break;
