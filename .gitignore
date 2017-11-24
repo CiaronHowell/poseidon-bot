@@ -1,5 +1,6 @@
 #packages
 node_modules/
+.vscode/
 
 #files
 auth.js
