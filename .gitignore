@@ -1,1 +1,5 @@
+#packages
 node_modules/
+
+#files
+auth.js
