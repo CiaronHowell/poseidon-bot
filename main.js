@@ -23,6 +23,8 @@ const client = new Discord.Client();
 // logging bot in
 client.login(auth.token);
 
+// test
+
 // prints info
 client.on('ready', () => {
     // shows that the bot is connected and what it is logged in as
