@@ -1,10 +1,43 @@
 {
     "name": "zeus-bot",
-    "version": "1.0.1",
+    "version": "1.0.0",
     "description": "The God of Bots",
     "main": "main.js",
-    "author": "Ciaron Howell",
     "dependencies": {
-        "discord.js": "^11.2.1"
-    }
-}
+      "winston": "^2.4.0",
+      "bufferutil": "^3.0.3",
+      "dateformat": "^3.0.2",
+      "discord.js": "^11.2.1",
+      "node-opus": "^0.2.7",
+      "pm2": "^2.8.0"
+    },
+    "devDependencies": {
+      "eslint": "^4.4.1",
+      "eslint-config-airbnb": "^15.1.0",
+      "eslint-config-airbnb-base": "^11.3.1",
+      "eslint-plugin-import": "^2.7.0",
+      "eslint-plugin-jsx-a11y": "^6.0.2",
+      "eslint-plugin-react": "^7.1.0"
+    },
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/CiaronHowell/zeus-bot.git"
+    },
+    "keywords": [
+      "Discord",
+      "DiscordApp",
+      "Node.js",
+      "JavaScript",
+      "Bot"
+    ],
+    "author": "Ciaron Howell",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/CiaronHowell/zeus-bot/issues"
+    },
+    "homepage": "https://github.com/CiaronHowell/zeus-bot#readme"
+  }
+  
