@@ -4,12 +4,12 @@
     "description": "The God of Bots",
     "main": "main.js",
     "dependencies": {
-      "winston": "^2.4.0",
       "bufferutil": "^3.0.3",
       "dateformat": "^3.0.2",
       "discord.js": "^11.2.1",
       "node-opus": "^0.2.7",
-      "pm2": "^2.8.0"
+      "pm2": "^2.8.0",
+      "winston": "^2.4.0"
     },
     "devDependencies": {
       "eslint": "^4.4.1",
