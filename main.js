@@ -6,7 +6,7 @@ const Discord = require('discord.js');
 const logger = require('winston');
 
 // gets token of bot
-const botAuth = require('./auth.js');
+const Auth = require('./auth.js');
 
 // //////////////////////// logger settings ////////////////////////////////
 logger.remove(logger.transports.Console);
@@ -25,7 +25,7 @@ client.on('ready', () => {
     // shows that the bot is connected and what it is logged in as
     logger.info('Connected');
     logger.info('Logged in as: ');
-    logger.info(`${client.username} - (${client.id})`);
+    logger.info(`${client} - ${client.id}`);
 });
 // ///////////////////////////////////////////////////////////////////////////
 
@@ -33,12 +33,27 @@ client.on('ready', () => {
 // the bot will take a message and check it
 client.on('message', (msgInfo) => {
     // this bot will listen for '>test'
-    if (msgInfo.content == '>test') {
+    if (msgInfo.content === '>test') {
         // the bot replies
-        msgInfo.channel.send("Yo, what's good homie");
+        msgInfo.channel.send(`Yo, what's good ${msgInfo.author}`);
+    }
+
+    // Splits the message into multiple parts
+    const userMessage = msgInfo.content.split(' ');
+    if (userMessage[0] === '>*') {
+        const num1 = parseFloat(userMessage[1]);
+        const num2 = parseFloat(userMessage[2]);
+
+        const ans = num1 * num2;
+
+        msgInfo.channel.send(`The answer is: ${ans}`);
     }
 });
-////////////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////////////
+
+// /////////////////// greetings ///////////////////////////
+
+// ///////////////////////////////////////////////////////
 
 // logging bot in
-client.login(botAuth);
+client.login(Auth.botToken);
