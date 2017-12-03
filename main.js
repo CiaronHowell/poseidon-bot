@@ -48,12 +48,13 @@ client.on('message', (msgInfo) => {
 
         msgInfo.channel.send(`The answer is: ${ans}`);
     }
+
+    if (msgInfo.content === '>depressed') {
+        // the bot replies
+        msgInfo.channel.send(`Cheer up ${msgInfo.author}, all is okay :D`);
+    }
 });
 // //////////////////////////////////////////////////////////////////////////////
-
-// /////////////////// greetings ///////////////////////////
-
-// ///////////////////////////////////////////////////////
 
 // logging bot in
 client.login(Auth.botToken);
