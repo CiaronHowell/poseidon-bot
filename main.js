@@ -1,60 +1,59 @@
-// //////////////////// imports //////////////////////////
 // imports discord.js module
 const Discord = require('discord.js');
-
-// imports winston module
-const logger = require('winston');
-
-// gets token of bot
-const Auth = require('./auth.js');
-
-// //////////////////////// logger settings ////////////////////////////////
-logger.remove(logger.transports.Console);
-
-logger.add(logger.transports.Console, {
-    colorize: true,
-});
-
-logger.level = 'debug';
+// imports file system from node.js
+const fs = require('fs');
+// imports enmap module
+const Enmap = require('enmap');
 
 // initialize discord bot
 const client = new Discord.Client();
+// gets token of bot
+const auth = require('./auth.json');
+// makes auth it accessible through client
+client.auth = auth;
 
 // prints info
 client.on('ready', () => {
     // shows that the bot is connected and what it is logged in as
-    logger.info('Connected');
-    logger.info('Logged in as: ');
-    logger.info(`${client} - ${client.id}`);
+    console.log('Connected');
+    console.log('You have started Zeus-Bot');
 });
-// ///////////////////////////////////////////////////////////////////////////
 
-// ////////////////////////////// test ///////////////////////////////////////
-// the bot will take a message and check it
-client.on('message', (msgInfo) => {
-    // this bot will listen for '>test'
-    if (msgInfo.content === '>test') {
-        // the bot replies
-        msgInfo.channel.send(`Yo, what's good ${msgInfo.author}`);
-    }
-
-    // Splits the message into multiple parts
-    const userMessage = msgInfo.content.split(' ');
-    if (userMessage[0] === '>*') {
-        const num1 = parseFloat(userMessage[1]);
-        const num2 = parseFloat(userMessage[2]);
-
-        const ans = num1 * num2;
-
-        msgInfo.channel.send(`The answer is: ${ans}`);
-    }
-
-    if (msgInfo.content === '>depressed') {
-        // the bot replies
-        msgInfo.channel.send(`Cheer up ${msgInfo.author}, all is okay :D`);
-    }
+// reads all files in events
+fs.readdir("./events/", (err, files) => {
+  if (err) return console.error(err);
+  // loops through each file
+  files.forEach( file => {
+    // check if .js file
+    if (!file.endsWith(".js")) return;
+    // load the event file
+    const event = require(`./events/${file}`);
+    // gets the event name from file name
+    let eventName = file.split(".")[0];
+    // each event will be called with the client argument,
+    // followed by its "normal" arguments
+    client.on(eventName, event.bind(null, client));
+    delete require.cache[require.resolve(`./events/${file}`)];
+  });
 });
-// //////////////////////////////////////////////////////////////////////////////
+
+client.commands = new Enmap();
+
+// reads all files in commands
+fs.readdir('./commands/', (err, files) => {
+  if (err) return console.error(err);
+  // loops through each file
+  files.forEach(file => {
+    // check if .js file
+    if (!file.endsWith(".js")) return;
+    // load the event file
+    let props = require(`./commands/${file}`);
+    let commandName = file.split(".")[0];
+    console.log(`Attempting to load ${commandName}`);
+    //storing commands in the enmap
+    client.commands.set(commandName, props);
+  });
+});
 
 // logging bot in
-client.login(Auth.botToken);
+client.login(auth.token);

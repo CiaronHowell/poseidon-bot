@@ -3,6 +3,8 @@ node_modules/
 .vscode/
 
 #files
-auth.js
+auth.json
 temp
 .vscode/
+.eslintrc.json
+package-lock.json
