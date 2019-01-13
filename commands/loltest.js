@@ -30,6 +30,8 @@ exports.run = (client, message, args) => {
 
   }
 
+  request.send();
+
   request.open('GET', '' + args + client.auth.lolapi, false);
 
   // TODO: Utilise the encrypted user id to gather more info
@@ -42,5 +44,6 @@ exports.run = (client, message, args) => {
   }
 
   request.send();
+
 
 }
