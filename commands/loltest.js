@@ -32,18 +32,19 @@ exports.run = (client, message, args) => {
 
   request.send();
 
-  request.open('GET', '' + args + client.auth.lolapi, false);
-
   // TODO: Utilise the encrypted user id to gather more info
-  request.onload = function () {
 
-    if (request.status >= 200 && request.status < 400) {
+  //request.open('GET', '' + args + client.auth.lolapi, false);
 
-    }
+  //request.onload = function () {
 
-  }
+    //if (request.status >= 200 && request.status < 400) {
 
-  request.send();
+    //}
+
+  //}
+
+  //request.send();
 
 
 }
