@@ -16,7 +16,7 @@ client.auth = auth;
 client.on('ready', () => {
     // shows that the bot is connected and what it is logged in as
     console.log('Connected');
-    console.log('You have started Zeus-Bot');
+    console.log('You have started Poseidon-Bot');
 });
 
 // reads all files in events
