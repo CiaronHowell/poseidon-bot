@@ -11,7 +11,7 @@ RiotAPI
 BungieAPI  
 
 # Contributors:
-Ciaron Howell  
+[Ciaron Howell](https://github.com/CiaronHowell)  
 Joshua Alcock  
-Hamish Baxter  
-Jake Ward  
+[Hamish Baxter](https://github.com/baxter40)  
+[Jake Ward](https://github.com/JakeWard98)  
