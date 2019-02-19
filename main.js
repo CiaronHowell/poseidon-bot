@@ -21,38 +21,54 @@ client.on('ready', () => {
 
 // reads all files in events
 fs.readdir("./events/", (err, files) => {
-  if (err) return console.error(err);
-  // loops through each file
-  files.forEach( file => {
-    // check if .js file
-    if (!file.endsWith(".js")) return;
-    // load the event file
-    const event = require(`./events/${file}`);
-    // gets the event name from file name
-    let eventName = file.split(".")[0];
-    // each event will be called with the client argument,
-    // followed by its "normal" arguments
-    client.on(eventName, event.bind(null, client));
-    delete require.cache[require.resolve(`./events/${file}`)];
-  });
+    if (err) return console.error(err);
+    // loops through each file
+    files.forEach( file => {
+        // check if .js file
+        if (!file.endsWith(".js")) return;
+        // load the event file
+        const event = require(`./events/${file}`);
+        // gets the event name from file name
+        let eventName = file.split(".")[0];
+        // each event will be called with the client argument,
+        // followed by its "normal" arguments
+        client.on(eventName, event.bind(null, client));
+        delete require.cache[require.resolve(`./events/${file}`)];
+    });
 });
 
 client.commands = new Enmap();
 
-// reads all files in commands
-fs.readdir('./commands/', (err, files) => {
-  if (err) return console.error(err);
-  // loops through each file
-  files.forEach(file => {
-    // check if .js file
-    if (!file.endsWith(".js")) return;
-    // load the event file
-    let props = require(`./commands/${file}`);
-    let commandName = file.split(".")[0];
-    console.log(`Attempting to load ${commandName}`);
-    //storing commands in the enmap
-    client.commands.set(commandName, props);
-  });
+// reads all commands for moderators
+fs.readdir('./commands/moderator/', (err, files) => {
+    if (err) return console.error(err);
+    // loops through each file
+    files.forEach(file => {
+        // check if .js file
+        if (!file.endsWith(".js")) return;
+        // load the event file
+        let props = require(`./commands/moderator/${file}`);
+        let commandName = file.split(".")[0];
+        console.log(`Attempting to load ${commandName}`);
+        //storing commands in the enmap
+        client.commands.set(commandName, props);
+    });
+});
+
+// reads all commands for moderators
+fs.readdir('./commands/user/', (err, files) => {
+    if (err) return console.error(err);
+    // loops through each file
+    files.forEach(file => {
+        // check if .js file
+        if (!file.endsWith(".js")) return;
+        // load the event file
+        let props = require(`./commands/user/${file}`);
+        let commandName = file.split(".")[0];
+        console.log(`Attempting to load ${commandName}`);
+        //storing commands in the enmap
+        client.commands.set(commandName, props);
+    });
 });
 
 // logging bot in
