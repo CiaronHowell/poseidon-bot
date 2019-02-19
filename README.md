@@ -15,3 +15,4 @@ BungieAPI
 Joshua Alcock  
 [Hamish Baxter](https://github.com/baxter40)  
 [Jake Ward](https://github.com/JakeWard98)  
+[Kian Hogg](https://github.com/Kian-Hogg)
