@@ -13,5 +13,5 @@ exports.run = (client, message, args) => {
         .then(messages => message.channel.bulkDelete(messages))
         .catch(console.error);
 
-    console.log('Delete completed');
+    console.log('Delete completed.');
 };
