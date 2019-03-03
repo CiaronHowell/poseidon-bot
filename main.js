@@ -8,7 +8,7 @@ const Enmap = require('enmap');
 // initialize discord bot
 const client = new Discord.Client();
 // gets token of bot
-const auth = require('./auth.json');
+const auth = require('./data/auth.json');
 // makes auth it accessible through client
 client.auth = auth;
 
