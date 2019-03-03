@@ -1,17 +1,27 @@
 exports.run = (client, message, args) => {
-    // checks if the user is the owner (needs to be changed)
-    // TODO: Check if the author has permissions, not the ownerID
+    // checks if the user is the owner
     if (!(message.member.hasPermission('ADMINISTRATOR'))) return;
 
-    // deletes the users message
-    message.delete()
-        .then(console.log('Deleted author message'))
-        .catch(console.error);
+    // bots can't delete 99< messages
+    if (args < 0 || args > 99) {
+        message.channel.send('Please keep the number between 0-99, ');
+        return;
+    }
 
-    // gets a specified amount of messages, and then deletes them
-    message.channel.fetchMessages({ limit: args })
-        .then(messages => message.channel.bulkDelete(messages))
-        .catch(console.error);
+    async function deleteMsgs() {
+        message.delete()
+            .then(console.log('Deleted authors message'))
+            .catch(console.error);
 
-    console.log('Delete completed');
+        // gets a specified amount of messages, and then deletes them
+        const fetchedMessages = await message.channel.fetchMessages({ limit: args })
+            .catch(console.error);
+
+        message.channel.bulkDelete(fetchedMessages)
+            .catch(console.error);
+    }
+
+    // TODO: Bot cannot bulk delete one message, so needs .delete
+
+    deleteMsgs();
 };
