@@ -1,0 +1,31 @@
+sudo: required
+
+services:
+  - docker
+
+language: node_js
+
+node_js:
+  - node
+
+env:
+  global:
+  - secure: SW6+aLcBCHBNIGYaxlUzEfv1nCgoCCMQA4mwF+WeLeS34MwiN98aIpPhGyE/hCHdh6fkYT4EkAVORGTiYJ9vtyAQG9Ogsxyx+h+jT943+nbBYeiXU5b67Fv0AycMECPA/taeS/K9HNs6Qb4FZuNnXGtvFRMgNmufvJqpGdPG0VD515hnpEXibM2bWB0fETaWKoEa1qkm1m6W6fNX1ZMuR4PwRj66oWiBMQuOYMRoayhYbpLdP9dPh4bT9v8oGDViKUelCyS1EgYmSouKX7fAvkz8KJAHqOrBs0AIiAS9BpICf097/B0A/HalX/GvzSJruQYi9rCJfp8smcfp8i7IottiwgQD52oWoFZaKquGrZg8WdPFNBOX+NDe0GeYapmh/qXl7R0GAWxmMs2s3p0n2T0jZ2f1ReEC7mBLmyA37lKos4Y9BQUCaQH6Ze0asHH7KbB/s0Krro7LmBlwlARTFq7O88qgvq9bKfMWrCq30Anfp8Jh/xhsFblEeQ7JfFlaaRMjMo3dFQyzXsqJSMZtmboHNhP2UJ7WNDpmmZX/FvSB8fehgVNHfVwaMHB+/e60tJBhNtiEr6lckLddhtoXJAAIJETTEi4Zul8mASKHDy7NP5c1AP3ky+rgmbcBfGiS3sz/eG3HLLZ4/P0g34syKmpqBVf9l3d13g+wmBWFk70=
+  - secure: g00gQjo7m1Rqp1NzprWULTKMT92bE3GWsSU4opTgGDtepEN/dm96869VeKeERRdcj70z73wrtxQIs9uOQgEqNGvZinCDLxblosAv9u++e8IwCsciyWmD4AOi+xko7pWSApFPRkR69UQepRqNr+00Te5DSEv2X0Deyng7QYWCUcwmnwMNFX5Wtus2QTGcLvCgsgb8VyvsuB69XXW0ZB82m78HT/5E3FewqT5SvdU9lHUJMNZCP0caL7cDCuocRJG0fV1HjBuOWVlhz/7WeCk/70DOaXQi/GfIWnS5QtVNTCIdt7YPKhaDbzpiaXqQu+u6Q+IAL/YI0oq0QEuEAb50k0/hXj4Lvx1j4GtW8m+pAjg1yfp2y5I+r7oecg6Gif/PW5cccvR/+09fn9A/pNo6lEcFCGhbkP/ksT+sL2sc48nZS4QEgusmrMzAxFpi4bMVZEo0OG+synSKPuRa4kCrnf2D8+OtmtCKl9TEWR88fl7YfWZ+fyLEcAUYzDLi8gas0Im91tCKAjYq+PxsgTr3wehMlTS2KFmquD8EX88RtYl+4QAJrmqRJ8JrktvE0soEJX/tXMhzXI6kjmMd6h1xc/XqvWWE7TyHlIDtWyIMaXyOOGHSklmTwUjJYypcqvBF+YSlOm3e261BL241CCJJAbNLH1VnCMBQGu5ItOuGUCM=
+  - secure: GQkQMknd0I2fowG6DZbdXHbqCLtgoyABj9Z5ErFFJRS6whsN7Ujq6Mz7QNdyPumnVcRJDArovn75oU7dkUqDReS9HqZqkr/GTgbPN+QQpJ4WuXuBEaX6s2StXNG3FLIGC3xfKOM+HSte7KtMGdVeOy5Kn/xQu9i2xz0IK941lC9PAbEnJvTFp9ui3K2vDm+fZ/wMcZh6J6Hi6n15Sv4m8kvClnXGCAGYV6tPH/XrlbgJhHzanEFKBIyg4FjRi/MEWRsmOcXme9xFLKEsyZ9oykENRnhZ7qPxrADk5xhDDbaIVKGYf0XdHSzESlabRID1+YYthLES0gjkRmD1GMKHDUz3Js7l9ka6fECXN/Wq2Ozvd/ckn3iOyINOdQjk9xOZYE/0wXsOHusJ4qfrwfCYhtmM6iYWLkpBdjPzKjoB+WSR/JSscaXbDReXWtIStEk1SuFxswDdPquGLutvWXpp6t+AibML8venr+/lMVcdhoxNvauZUBzZiTUEscSofNcLaX6h8inFe01H0moa2EIUIz5zvYydOmZET76eFKsGU0F3j5K1yaiYQoqLKQJ/eORvRpNzPW0LT5O8BPKmT3M2WKSIHqvZGj8DiNodA8PJ9kF9t3ckVMYUoOWIzmM22Ki0LXEy9kK9NMCJXQJCRegRG4XgByMwl+HkTUAXgpBmM7M=
+  - COMMIT=${TRAVIS_COMMIT::8}
+
+after_success:
+  # We're logging onto Docker
+  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+  # stores the name of the repo
+  - export REPO=ciaronhowell/poseidon-bot
+  # finds the tag of the travis build and echos that if it isnt master
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
+  # builds the docker image
+  - docker build -f Dockfile -t $REPO:$COMMIT .
+  - docker tag $REPO:$COMMIT $REPO:$TAG
+  # tags the docker image with the git commit hash and the travis build number
+  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
+  # finally push the image back onto Docker Hub
+  - docker push $REPO
