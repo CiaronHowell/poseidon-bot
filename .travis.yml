@@ -1,6 +1,9 @@
 sudo: required
 
-language: ruby
+language: go
+
+go:
+  - '1.5'
 
 services:
   - docker
