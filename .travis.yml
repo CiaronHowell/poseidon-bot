@@ -1,9 +1,9 @@
 sudo: required
 
-language: go
+language: node_js
 
 go:
-  - '1.5'
+  - 'node'
 
 services:
   - docker
