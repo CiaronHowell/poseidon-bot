@@ -17,13 +17,13 @@ env:
 
 after_success:
   # We're logging onto Docker
-  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
   # stores the name of the repo
   - export REPO=ciaronhowell/poseidon-bot
   # finds the tag of the travis build and echos that if it isnt master
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
   # builds the docker image
-  - docker build -f Dockfile -t $REPO:$COMMIT .
+  - docker build -f Dockerfile -t $REPO:$COMMIT .
   - docker tag $REPO:$COMMIT $REPO:$TAG
   # tags the docker image with the git commit hash and the travis build number
   - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
