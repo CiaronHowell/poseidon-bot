@@ -1,31 +1,30 @@
-sudo: required
-
-services:
-  - docker
-
+sudo: false
 language: node_js
-
 node_js:
-  - node
-
+- node
+services:
+- docker
+addons:
+  apt:
+    packages:
+    - sshpass
 env:
   global:
   - secure: SW6+aLcBCHBNIGYaxlUzEfv1nCgoCCMQA4mwF+WeLeS34MwiN98aIpPhGyE/hCHdh6fkYT4EkAVORGTiYJ9vtyAQG9Ogsxyx+h+jT943+nbBYeiXU5b67Fv0AycMECPA/taeS/K9HNs6Qb4FZuNnXGtvFRMgNmufvJqpGdPG0VD515hnpEXibM2bWB0fETaWKoEa1qkm1m6W6fNX1ZMuR4PwRj66oWiBMQuOYMRoayhYbpLdP9dPh4bT9v8oGDViKUelCyS1EgYmSouKX7fAvkz8KJAHqOrBs0AIiAS9BpICf097/B0A/HalX/GvzSJruQYi9rCJfp8smcfp8i7IottiwgQD52oWoFZaKquGrZg8WdPFNBOX+NDe0GeYapmh/qXl7R0GAWxmMs2s3p0n2T0jZ2f1ReEC7mBLmyA37lKos4Y9BQUCaQH6Ze0asHH7KbB/s0Krro7LmBlwlARTFq7O88qgvq9bKfMWrCq30Anfp8Jh/xhsFblEeQ7JfFlaaRMjMo3dFQyzXsqJSMZtmboHNhP2UJ7WNDpmmZX/FvSB8fehgVNHfVwaMHB+/e60tJBhNtiEr6lckLddhtoXJAAIJETTEi4Zul8mASKHDy7NP5c1AP3ky+rgmbcBfGiS3sz/eG3HLLZ4/P0g34syKmpqBVf9l3d13g+wmBWFk70=
   - secure: g00gQjo7m1Rqp1NzprWULTKMT92bE3GWsSU4opTgGDtepEN/dm96869VeKeERRdcj70z73wrtxQIs9uOQgEqNGvZinCDLxblosAv9u++e8IwCsciyWmD4AOi+xko7pWSApFPRkR69UQepRqNr+00Te5DSEv2X0Deyng7QYWCUcwmnwMNFX5Wtus2QTGcLvCgsgb8VyvsuB69XXW0ZB82m78HT/5E3FewqT5SvdU9lHUJMNZCP0caL7cDCuocRJG0fV1HjBuOWVlhz/7WeCk/70DOaXQi/GfIWnS5QtVNTCIdt7YPKhaDbzpiaXqQu+u6Q+IAL/YI0oq0QEuEAb50k0/hXj4Lvx1j4GtW8m+pAjg1yfp2y5I+r7oecg6Gif/PW5cccvR/+09fn9A/pNo6lEcFCGhbkP/ksT+sL2sc48nZS4QEgusmrMzAxFpi4bMVZEo0OG+synSKPuRa4kCrnf2D8+OtmtCKl9TEWR88fl7YfWZ+fyLEcAUYzDLi8gas0Im91tCKAjYq+PxsgTr3wehMlTS2KFmquD8EX88RtYl+4QAJrmqRJ8JrktvE0soEJX/tXMhzXI6kjmMd6h1xc/XqvWWE7TyHlIDtWyIMaXyOOGHSklmTwUjJYypcqvBF+YSlOm3e261BL241CCJJAbNLH1VnCMBQGu5ItOuGUCM=
-  - secure: GQkQMknd0I2fowG6DZbdXHbqCLtgoyABj9Z5ErFFJRS6whsN7Ujq6Mz7QNdyPumnVcRJDArovn75oU7dkUqDReS9HqZqkr/GTgbPN+QQpJ4WuXuBEaX6s2StXNG3FLIGC3xfKOM+HSte7KtMGdVeOy5Kn/xQu9i2xz0IK941lC9PAbEnJvTFp9ui3K2vDm+fZ/wMcZh6J6Hi6n15Sv4m8kvClnXGCAGYV6tPH/XrlbgJhHzanEFKBIyg4FjRi/MEWRsmOcXme9xFLKEsyZ9oykENRnhZ7qPxrADk5xhDDbaIVKGYf0XdHSzESlabRID1+YYthLES0gjkRmD1GMKHDUz3Js7l9ka6fECXN/Wq2Ozvd/ckn3iOyINOdQjk9xOZYE/0wXsOHusJ4qfrwfCYhtmM6iYWLkpBdjPzKjoB+WSR/JSscaXbDReXWtIStEk1SuFxswDdPquGLutvWXpp6t+AibML8venr+/lMVcdhoxNvauZUBzZiTUEscSofNcLaX6h8inFe01H0moa2EIUIz5zvYydOmZET76eFKsGU0F3j5K1yaiYQoqLKQJ/eORvRpNzPW0LT5O8BPKmT3M2WKSIHqvZGj8DiNodA8PJ9kF9t3ckVMYUoOWIzmM22Ki0LXEy9kK9NMCJXQJCRegRG4XgByMwl+HkTUAXgpBmM7M=
+  - secure: GyhlSbS+bI+EX+HKjuif8siMjsvWfFMnlQwSu4R9qZO7fKW2Wf6W3SAseoChZrvBwVOz7pq6Qo6mlJk2vjIR7HP2SIkQWT58RO9430S3pv3gKW7nArhXr9+EwMRluAxmjYC3o5qySKvG7Yp+h/x/au3oyZ7lobvG/YJyJ+wwJ122EoVzE9kZ0GI09avH51ahLMrn0RTHL43zjFe3cBzI5Jb8OKsZ0G7asdheb8A2RUFvGyjF9jaQXEjvcUbW1WtpP/LXADqm2H1qmVJsi2RHMUgmIxocnr28fjS0RvVDeRD/nMO4Alyx9IDpfLKGOuMFaK+LDTSVM3PFr/c6W98lJVansdEyVqE35waQFZ1pMj+gjb+oXyxja8uBRbbZKAoN8XxS6QINDprAzz9PRMmo1S4yx7bWsd7s7bgF7P3Ei8yJO68nL+8+MbiK0bfYuO3AeEaAjNDd0q/ND+2JOew/0AKj3FuGYAMeKtLk12Nnj5QT5TSwL42TD0neTrLlkqv2Hb+97vaVa8HHiO0PO15QaVuM2nVlIFwwXkMtx0ZYn6yRic/TQRLcnpHmWIIIhu3Y1POrWfOUlA9LTwsypKym9Bfm8vFlYvlkposa4sqv6XgL6tewnaD883diZ4OPw6OTSTwtruvZ06736MtWuKfE4QrmQmvPFTs0gIFdpSGITAU=
   - COMMIT=${TRAVIS_COMMIT::8}
-
+  - secure: Kv1jZmzxQFF/pm9B/29dAUuX1YOidfQ3/N+1EnIroFqbABmLrr2VzpE9Uw78f7h1RiDzbk4L6CU2U3r+hzeJ8gvtGaqd1WXo91mrUV1EQZfFIwirVqTdR2UcwPuL7oWOslg99Gbr8jHipa+5CdF5O8yv9i0j55GbSYtgWZ1Bh3iqnAcKfbDEwr8BDi26+aXjNyIJVDaOwDs0lkALqv9ZQuDE4ZR6pZW9gJbg/t49jIjEp8vPS1DvgcRqYIZZVupZMVqAk8HdXyU6PigQsYyLlahhdT6/sxDN9MBKR/32nGfVJilehwdr8haaLb8urG5LuUssRhCYW7tiZzsJHtydIFYyeLdvPc9f2qOELRMqKLWx9PWtYjZq6o+aY7vWCoZr+KIIGRZiFazoM8cQ/peClQmcYZDE6DXC/VDbM8N7EVif7bW1OPs8AiWDiuXbIKS3cmFA2wz1rli3XHpgvIK9WhSVEAM3yy7EvKBUx2BIJQcNc89Q8ydWTsatA3FleOafXg/73uiC8NQz2pEctWyUfDDgetqOgFuLE2fOgHQDR8ycWIS2JNVA1ryaGYqf3cxqXVF8lBGXg1qJDy7DJsVnAOk+mST1NFjUt0gM92ZGd+dOulE3fR58GmLudb0hGF/C/SX0uymz1nnrWvmEsEO7xQBydihNPUBYMZ1XfonEI5Y=
+  - secure: H+jjQFqieG6b3zX1/YwFLpP3ib5iE18c/wpSGfcL2LBZSmXyZ2e7qMq4Xykxwvp3Du7sU+IYzwSx/OC3XU56q1v3jNTvIqgedXeNJAUIEdgUm62Bn3bBArcuxKGM4m84FEyhryw15sMExqBTM7nPcqf6x2Hnc06zXZaCidrq00R/aYeq2Auv6WeIdms2Xhod9l+LzKtEPHbyPfG9fStfDHuvesEtV9YqX0mTTlww9YFBJGgtVWk10wD3GztSuakGE9yeJS1yJdtzxtpmPntEmmAXDnlYR7SdSTcODewkAJGBkbnV7NzCeQ0vbslhDgOd9eUhgHSdvyVHQC3u8yTgR7ubtLJVlmxGm2C2ZsIVEE5GplByZn22yQS6p+tuGImBOPQNOM2Z3nq9ZtdgA0F8ZuKmIApdM3s9fjUu3z6ONWlIELMt6j4B/wMNWPxR7smOAI95m0CuZZwAS4rJmXLQGh09GZ5UZwx8kWOpxac72AH07iAH1dQe2b8n4dHFApqwUbJmCO74fULfdrmmZaewhpUE7ebDlGTKWWbnPRASfNYuzp8K8QbpeFDC1GV+65z/Nxvl313Hs9QrLwfM1aAw6Mtdkor/F2412vwWGF8U9dnrqprRgFbfw2mTRZac8CSu6XBhTN68DWJb6g0+MqTRAqOaIvEbSuWfCoB7Es4b/EE=
+  - secure: H/B4YkDdmIp6YmL1zyOtVvFymwWGFKxCmeC5ueAeYk9kpRwU+EWRRW63NJ5ljowGMMruj09KD0nKzgRSahTF2jQ8gCQIyLyW+/djPvJ5n5vdHNJ2aHAhNJUgsidRSywfnH04CSbF4wPG741bnrmqnbodj5NyEUyqm+L4lrXVZnWxNQjQ3Xt6OnYgK2l8NyAoSjrY5H7ZvMo2n7C6hsx7NmEq0uR42eidCqWrAYLIW51ySUHgl8aQ4cLkPya5H4F6b6BDPbN3qoG/LcmUhvCvyyOXyqH4qXtyCNZBtvtRE+mdJ0uv2MXX35Wbv2ohQYwbCSMh03rRP6u56hEJPf2vnOhkWN84Azxwm5FmpWgPU3/Nr3/SxrOy+G2P4jQwMnmjXv/6Pk02tbGQbTgeJtB/Xhb8bz0XMuZyO9vhZv8lLkxCbaHhFRMTgj25lEG3ZiOstGdWW5LHbAvlGVVx6EBlQsddWw0P3p3w36m09q8Kp+3ci4Hur7RnNXeXCVNTffQLUMh7dEQOJW79qfMV2p0ZNl/FOXlsgSpJ3Kg5b2nNT0tD8prk6r/Fc+GmCnD3HwyyRqM2cu3TNnFaRnWwcmPLkapckqI3DG8s2Yptj0ZQh23/ZA6BXD0/z+x/QJRBsAr2Vb72tDkLS+T8tNk3U6El6sUXsq7i5I9n9lVtBERMKKk=
 after_success:
-  # We're logging onto Docker
-  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-  # stores the name of the repo
-  - export REPO=ciaronhowell/poseidon-bot
-  # finds the tag of the travis build and echos that if it isnt master
-  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
-  # builds the docker image
-  - docker build -f Dockfile -t $REPO:$COMMIT .
-  - docker tag $REPO:$COMMIT $REPO:$TAG
-  # tags the docker image with the git commit hash and the travis build number
-  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-  # finally push the image back onto Docker Hub
-  - docker push $REPO
+- docker login -u $DOCKER_USER -p $DOCKER_PASS
+- export REPO=ciaronhowell/poseidon-bot
+- export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH
+  ; fi`
+- docker build -f Dockerfile -t $REPO:$COMMIT .
+- docker tag $REPO:$COMMIT $REPO:$TAG
+- docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
+- docker push $REPO
+- export SSHPASS=$DEPLOY_PASS
+- sshpass -e ssh $DEPLOY_USER@$DEPLOY_HOST $DEPLOY_PATH/deploy.sh
