@@ -3,14 +3,11 @@ FROM node:8
 # Create directory
 RUN mkdir -p /srv/app
 
-# This ensures that package and package-lock will copy over
+# Copies everything from current area to the following directory
 COPY . /srv/app
 
-# Installs the modules needed for the bot
+# Sets work directory
 WORKDIR /srv/app
+
+# Installs the dependencies 
 RUN npm install
-
-# Copies all of the files
-COPY . .
-
-CMD ["npm", "start"]
