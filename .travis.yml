@@ -1,10 +1,11 @@
 sudo: false
 language: node_js
 node_js:
-- node
+  - node
 services:
-- docker
+  - docker
 addons:
+  ssh_known_hosts: ciaronhowell.co.uk
   apt:
     packages:
     - sshpass
