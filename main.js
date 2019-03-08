@@ -17,6 +17,8 @@ client.on('ready', () => {
     // shows that the bot is connected and what it is logged in as
     console.log('Connected');
     console.log('You have started Poseidon-Bot');
+    client.user.setActivity('>help');
+    console.log('Activity has been set');
 });
 
 // reads all files in events
