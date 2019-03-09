@@ -96,4 +96,3 @@ data/auth.json
 temp
 .eslintrc.json
 package-lock.json
-deploy_key
