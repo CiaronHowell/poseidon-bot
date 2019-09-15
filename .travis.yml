@@ -26,6 +26,6 @@ after_success:
 deploy:
   provider: script
   skip_cleanup: true
-  script: chmod 600 deploy_rsa.enc && ssh -o StrictHostKeyChecking=no -i deploy_rsa travis@ciaronhowell.co.uk /srv/bots/poseidon-bot/deploy.sh
+  script: chmod 600 deploy_rsa.enc && ssh -o StrictHostKeyChecking=no -i deploy_rsa.enc travis@ciaronhowell.co.uk /srv/bots/poseidon-bot/deploy.sh
   on:
     branch: master
