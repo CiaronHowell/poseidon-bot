@@ -92,7 +92,13 @@ Thumbs.db
 
 
 #files
-data/auth.json
+data/config.json
 temp
 .eslintrc.json
 package-lock.json
+
+# Shhhh this contains the secret sauce
+config.json
+
+# We're using typescript, why would we include javascript?!
+*.js
