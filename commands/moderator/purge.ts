@@ -1,4 +1,4 @@
-import { Collection, Message } from "discord.js";
+import { Collection, Message, TextChannel } from "discord.js";
 import { Command } from "../../utils/iCommand";
 import { prefix } from "../../data/config.json";
 
@@ -11,7 +11,7 @@ class Purge implements Command {
 
     async run(message: Message, ...args: string[]): Promise<void> {
         // Checks if the user is the owner TODO: This will most likely be changed later
-        if (!(message.member.hasPermission('ADMINISTRATOR'))) return;
+        if (!(message.member!.hasPermission('ADMINISTRATOR'))) return;
 
         const deleteAmount:number = Number.parseInt(args[0]); 
         // bots can't delete 99< messages
@@ -27,7 +27,7 @@ class Purge implements Command {
 
         try {
             // Delete amount specified
-            message.channel.bulkDelete(deleteAmount);
+            (message.channel as TextChannel).bulkDelete(deleteAmount);
         }
         catch (error:any) {
             console.error(error);

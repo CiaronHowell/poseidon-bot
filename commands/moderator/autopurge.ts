@@ -8,7 +8,7 @@ class AutoPurge implements Command {
     developer: boolean = true;
     run(message: Message, ...args: string[]): void {
         // Checks if the user is the owner
-        if (!(message.member.hasPermission('ADMINISTRATOR'))) return;
+        if (!(message.member!.hasPermission('ADMINISTRATOR'))) return;
 
         // TODO
         console.log("Hit");

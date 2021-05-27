@@ -12,7 +12,7 @@ client.once('ready', () => {
     // shows that the bot is connected and what it is logged in as
     console.log('Connected');
     console.log('Poseidon-Bot has been started');
-    client.user.setActivity(`${configs.prefix}help`);
+    client.user!.setActivity(`${configs.prefix}help`);
     console.log('Activity has been set');
 
     loadCommands();
