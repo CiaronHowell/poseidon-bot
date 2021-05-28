@@ -1,46 +1,37 @@
 import { Message } from "discord.js";
-import { Command } from "../../utils/iCommand";
-import got, { HTTPError } from "got";
-import { lolapi } from "../../data/config.json";
-import { AccountResponse, LeagueResponseCode } from "../../utils/leagueOfLegends/iAccountResponse";
+import { GetSummonerInfo } from "@core/lolApi";
+import { Command } from "@utils/iCommand";
+import { AccountResponse, LeagueResponseCode } from "@utils/leagueOfLegends/iAccountResponse";
+import { prefix } from "@data/config.json";
 
-class LolTest implements Command {
-    name: string = "lolTest";
+class SummonerInfo implements Command {
+    name: string = "summoner";
     description: string = "Test with the lol";
-    usage: string = "";
+    usage: string = `${prefix}${this.name}`;
     developer: boolean = false;
 
-    private readonly url:string = "https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
-    
     async run(message: Message, ...args: string[]): Promise<void> {
         let account:AccountResponse;
+        
         try {
-            account = await got(this.url + args[0], {
-                'searchParams': {
-                    api_key: lolapi
-                }
-            }).json();
+            account = await GetSummonerInfo(args[0], false);
         }
         catch (error: any) {
-
             console.log(`Error caught: ${error}`);
 
             const errorCode: number = error.response.statusCode;
             
-            if (errorCode == LeagueResponseCode.DATA_NOT_FOUND) {
+            if (errorCode == LeagueResponseCode.DATA_NOT_FOUND)
                 message.reply(`Could not find an account linked to the username: ${args[0]}`);
-            }
-            else {
+            else
                 console.error(`Error occured when trying to do ${this.name} - ${LeagueResponseCode[errorCode].toString()}`);
-            }
 
             return;
         }
-        
         
         message.reply(`\n${account.name}, Summoner Level: ${account.summonerLevel}`);
     }
     
 }
 
-export default new LolTest();
+export default new SummonerInfo();
